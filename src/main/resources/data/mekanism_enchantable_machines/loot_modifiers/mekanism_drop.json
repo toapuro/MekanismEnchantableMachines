@@ -1,0 +1,9 @@
+{
+  "type": "mekanism_enchantable_machines:enchantment_loot",
+  "conditions": [
+    {
+      "condition": "mekanism_enchantable_machines:loot_table_prefix",
+      "loot_table_prefix": "mekanism"
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "dev.toapuro.mekanism_enchantable_machines.mixin",
+  "compatibilityLevel": "JAVA_8",
+  "refmap": "mekanism_enchantable_machines.refmap.json",
+  "mixins": [
+    "compat.BasicEnergyContainerMixin",
+    "compat.BasicFluidTankMixin",
+    "enchantments.BlockTileMixin",
+    "enchantments.ItemBlockMekanismMixin",
+    "enchantments.ItemEnergizedMixin",
+    "enchantments.TileEntityMekanismMixin",
+    "renderer.BlockEntityRenderDispatcherMixin",
+    "supports.EnchantmentHelperMixin",
+    "supports.EntityRobitMixin",
+    "supports.ItemBlockFluidTankMixin",
+    "supports.ItemRobitMixin",
+    "supports.TileEntityDigitalMinerMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "overwrites": {
+    "requireAnnotations": true
+  }
+}
