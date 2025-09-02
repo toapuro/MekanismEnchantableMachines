@@ -2,7 +2,7 @@ package dev.toapuro.mekanism_enchantable_machines;
 
 import com.mojang.logging.LogUtils;
 import dev.toapuro.mekanism_enchantable_machines.compats.CoFHCompat;
-import dev.toapuro.mekanism_enchantable_machines.compats.IEnchantmentCompat;
+import dev.toapuro.mekanism_enchantable_machines.compats.handlers.IEnchantmentHandler;
 import dev.toapuro.mekanism_enchantable_machines.compats.system.MEMCompats;
 import dev.toapuro.mekanism_enchantable_machines.loot.MEMLootConditions;
 import dev.toapuro.mekanism_enchantable_machines.loot.MEMLootModifiers;
@@ -40,8 +40,9 @@ public class MekanismEnchantableMachines {
     }
 
     public void commonSetup(FMLCommonSetupEvent event) {
-        MEMCompats.COMPATS.runImplements(IEnchantmentCompat.class, IEnchantmentCompat::registerBlockSupports);
-        MEMCompats.COMPATS.runImplements(IEnchantmentCompat.class, IEnchantmentCompat::registerEntitySupports);
+        MEMCompats.COMPATS.runImplements(IEnchantmentHandler.class, IEnchantmentHandler::registerItemSupports);
+        MEMCompats.COMPATS.runImplements(IEnchantmentHandler.class, IEnchantmentHandler::registerBlockSupports);
+        MEMCompats.COMPATS.runImplements(IEnchantmentHandler.class, IEnchantmentHandler::registerEntitySupports);
     }
 
     public void registerCompats() {

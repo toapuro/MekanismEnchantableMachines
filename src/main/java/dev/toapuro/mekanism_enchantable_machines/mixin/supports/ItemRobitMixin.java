@@ -45,7 +45,7 @@ public class ItemRobitMixin extends ItemEnergized {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return MEMSupportedEnchantments.ENTITY_ENCHANTMENTS.supportEnchantment(mem$getEntityType(), enchantment);
+        return MEMSupportedEnchantments.ENTITY_ENCHANTMENTS.isEnchantmentSupported(mem$getEntityType(), enchantment);
     }
 
     @Override

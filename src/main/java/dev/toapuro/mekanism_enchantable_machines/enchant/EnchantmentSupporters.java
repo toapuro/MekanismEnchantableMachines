@@ -32,7 +32,7 @@ public class EnchantmentSupporters<T> {
         return enchantmentSupporters.containsKey(entry);
     }
 
-    public boolean supportEnchantment(T entry, Enchantment enchantment) {
+    public boolean isEnchantmentSupported(T entry, Enchantment enchantment) {
         List<IEnchantmentSupporter> resolvers = enchantmentSupporters.get(entry);
         for (IEnchantmentSupporter resolver : resolvers) {
             if (resolver.supportEnchantment(enchantment)) {

@@ -101,6 +101,7 @@ dependencies {
 
     // compats
     implementation fg.deobf("curse.maven:cofh-core-69162:5374122")
+    implementation fg.deobf("curse.maven:ender-io-64578:6938370")
 
     // for development
     runtimeOnly fg.deobf("curse.maven:jei-238222:6600311")

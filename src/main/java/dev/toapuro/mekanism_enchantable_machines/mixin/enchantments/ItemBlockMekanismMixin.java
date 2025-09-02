@@ -6,18 +6,11 @@ import mekanism.common.item.block.ItemBlockMekanism;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.level.block.Block;
 import org.jetbrains.annotations.NotNull;
-import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Shadow;
 
 @Mixin(value = ItemBlockMekanism.class, remap = false)
-public class ItemBlockMekanismMixin<BLOCK extends Block> extends BlockItem {
-
-    @Shadow
-    @Final
-    private @NotNull BLOCK block;
+public class ItemBlockMekanismMixin extends BlockItem {
 
     public ItemBlockMekanismMixin(BlockTile<?, ?> block, Properties properties) {
         super(block, properties);
@@ -25,7 +18,8 @@ public class ItemBlockMekanismMixin<BLOCK extends Block> extends BlockItem {
 
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment) {
-        return MEMSupportedEnchantments.BLOCK_ENCHANTMENTS.supportEnchantment(this.getBlock(), enchantment);
+        return MEMSupportedEnchantments.BLOCK_ENCHANTMENTS.isEnchantmentSupported(this.getBlock(), enchantment) ||
+                MEMSupportedEnchantments.ITEM_ENCHANTMENTS.isEnchantmentSupported(this, enchantment);
     }
 
     @Override
@@ -35,9 +29,11 @@ public class ItemBlockMekanismMixin<BLOCK extends Block> extends BlockItem {
 
     @Override
     public boolean isEnchantable(@NotNull ItemStack stack) {
-        if (block instanceof BlockTile) {
-            return MEMSupportedEnchantments.BLOCK_ENCHANTMENTS.hasSupports(this.getBlock());
+        if (MEMSupportedEnchantments.BLOCK_ENCHANTMENTS.hasSupports(this.getBlock()) ||
+                MEMSupportedEnchantments.ITEM_ENCHANTMENTS.hasSupports(this)) {
+            return true;
         }
+
         return super.isEnchantable(stack);
     }
 }
