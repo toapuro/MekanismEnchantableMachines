@@ -18,11 +18,12 @@ public abstract class BasicEnergyContainerMixin implements IModifiableEnergyCont
     @Shadow
     @Final
     private FloatingLong maxEnergy;
-    @Unique
-    private UnaryOperator<FloatingLong> mem$maxEnergyModifier = null;
 
     @Shadow
     public abstract FloatingLong getMaxEnergy();
+
+    @Unique
+    private UnaryOperator<FloatingLong> mem$maxEnergyModifier = null;
 
     @ModifyReturnValue(method = "getMaxEnergy", at = @At("RETURN"))
     public FloatingLong modifyMaxEnergy(FloatingLong original) {

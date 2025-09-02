@@ -29,7 +29,7 @@ public class TileEntityRendererFoilWrapper<T extends BlockEntity> implements Blo
         }
 
         if (EnchantmentTagUtil.isEnchanted(tile)) {
-            foilRenderer.render(tile, dispatcher, partialTick, poseStack, buffer);
+            foilRenderer.render(tile, dispatcher, partialTick, poseStack, buffer, light, overlay);
         }
     }
 

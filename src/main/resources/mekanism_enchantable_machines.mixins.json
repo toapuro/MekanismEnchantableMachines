@@ -14,7 +14,7 @@
     "renderer.BlockEntityRenderDispatcherMixin",
     "supports.EnchantmentHelperMixin",
     "supports.EntityRobitMixin",
-    "supports.ItemBlockFluidTankMixin",
+    "supports.ItemBlockMekanismMixinCapability",
     "supports.ItemRobitMixin",
     "supports.TileEntityDigitalMinerMixin"
   ],

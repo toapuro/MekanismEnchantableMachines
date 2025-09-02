@@ -31,19 +31,19 @@ import java.util.List;
 @Mixin(value = TileEntityMekanism.class, remap = false)
 public abstract class TileEntityMekanismMixin extends CapabilityTileEntity {
 
-    @Unique
-    private final EnchantmentCapability mem$enchantments = new EnchantmentCapability();
-
-    public TileEntityMekanismMixin(TileEntityTypeRegistryObject<?> type, BlockPos pos, BlockState state) {
-        super(type, pos, state);
-    }
-
     @Shadow
     @NotNull
     public abstract List<IExtendedFluidTank> getFluidTanks(@Nullable Direction side);
 
     @Shadow
     public abstract @NotNull List<IEnergyContainer> getEnergyContainers(@Nullable Direction side);
+
+    @Unique
+    private final EnchantmentCapability mem$enchantments = new EnchantmentCapability();
+
+    public TileEntityMekanismMixin(TileEntityTypeRegistryObject<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
+    }
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(IBlockProvider blockProvider, BlockPos pos, BlockState state, CallbackInfo ci) {

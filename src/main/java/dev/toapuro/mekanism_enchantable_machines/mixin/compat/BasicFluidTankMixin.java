@@ -17,11 +17,12 @@ public abstract class BasicFluidTankMixin implements IModifiableFluidTank {
     @Shadow
     @Final
     private int capacity;
-    @Unique
-    private IntUnaryOperator mem$capacityModifier = null;
 
     @Shadow
     public abstract int getCapacity();
+
+    @Unique
+    private IntUnaryOperator mem$capacityModifier = null;
 
     @ModifyReturnValue(method = "getCapacity", at = @At("RETURN"))
     public int modifyCapacity(int original) {

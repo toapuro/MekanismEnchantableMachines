@@ -12,11 +12,6 @@ public class MEMSupportedEnchantments {
     public static final EnchantmentSupporters<Block> BLOCK_ENCHANTMENTS = new EnchantmentSupporters<>();
     public static final EnchantmentSupporters<EntityType<?>> ENTITY_ENCHANTMENTS = new EnchantmentSupporters<>();
 
-    static {
-        initBlocks();
-        initEntities();
-    }
-
     public static void initBlocks() {
         for (IBlockProvider blockProvider : MekanismBlocks.BLOCKS.getAllBlocks()) {
             BLOCK_ENCHANTMENTS.registerSupports(blockProvider.getBlock(), Enchantments.BLAST_PROTECTION);
@@ -33,5 +28,10 @@ public class MEMSupportedEnchantments {
                 EnchantmentCategory.ARMOR_LEGS,
                 EnchantmentCategory.ARMOR_FEET
         );
+    }
+
+    static {
+        initBlocks();
+        initEntities();
     }
 }

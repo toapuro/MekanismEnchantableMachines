@@ -24,15 +24,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(value = EntityRobit.class, remap = false)
 public abstract class EntityRobitMixin extends PathfinderMob {
 
+    @Shadow
+    protected abstract void addCapabilityResolver(ICapabilityResolver resolver);
+
     @Unique
     private final EnchantmentCapability mem$enchantments = new EnchantmentCapability();
 
     protected EntityRobitMixin(EntityType<? extends PathfinderMob> entityType, Level level) {
         super(entityType, level);
     }
-
-    @Shadow
-    protected abstract void addCapabilityResolver(ICapabilityResolver resolver);
 
     @Inject(method = "<init>", at = @At("TAIL"))
     public void init(EntityType<?> type, Level world, CallbackInfo ci) {
