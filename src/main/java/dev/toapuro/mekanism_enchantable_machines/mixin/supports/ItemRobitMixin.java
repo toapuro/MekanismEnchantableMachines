@@ -28,7 +28,7 @@ public class ItemRobitMixin extends ItemEnergized {
         super(chargeRateSupplier, maxEnergySupplier, properties);
     }
 
-    @Inject(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"))
+    @Inject(method = "useOn", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;addFreshEntity(Lnet/minecraft/world/entity/Entity;)Z"), remap = true)
     public void attachEnchantment(UseOnContext context, CallbackInfoReturnable<InteractionResult> cir,
                                   @Local ItemStack stack,
                                   @Local EntityRobit robit) {

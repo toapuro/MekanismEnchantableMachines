@@ -31,7 +31,7 @@ public abstract class TileEntityMekanismMixin extends CapabilityTileEntity {
         this.addCapabilityResolver(new EnchantmentCapabilityResolver(mem$enchantments));
     }
 
-    @Inject(method = "load", at = @At("TAIL"))
+    @Inject(method = "load", at = @At("TAIL"), remap = true)
     public void load(CompoundTag tag, CallbackInfo ci) {
         mem$enchantments.load(tag);
     }
@@ -47,7 +47,7 @@ public abstract class TileEntityMekanismMixin extends CapabilityTileEntity {
         mem$enchantments.load(tag);
     }
 
-    @Inject(method = "saveAdditional", at = @At("TAIL"))
+    @Inject(method = "saveAdditional", at = @At("TAIL"), remap = true)
     public void saveAdditional(CompoundTag tag, CallbackInfo ci) {
         mem$enchantments.save(tag);
     }

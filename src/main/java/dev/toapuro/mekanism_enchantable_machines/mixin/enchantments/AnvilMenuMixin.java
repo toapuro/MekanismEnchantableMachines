@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.At;
 
 @Mixin(AnvilMenu.class)
 public class AnvilMenuMixin {
-    @WrapOperation(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isBookEnchantable(Lnet/minecraft/world/item/ItemStack;)Z"), remap = false)
+    @WrapOperation(method = "createResult", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/item/ItemStack;isBookEnchantable(Lnet/minecraft/world/item/ItemStack;)Z"), remap = false, require = 0)
     public boolean isBookEnchantable(ItemStack stack, ItemStack book, Operation<Boolean> original) {
         return MEMSupportedEnchantments.ITEM_ENCHANTMENTS.hasSupports(stack.getItem()) ||
                 original.call(stack, book);
